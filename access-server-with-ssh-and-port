@@ -1,0 +1,2 @@
+Akses Server dengan SSH memalui Port SSH
+ssh access with port: ssh -l usr -p xxxx 192.xxx.xxx.xxx
