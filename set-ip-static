@@ -1,0 +1,9 @@
+Set IP Static on Ubuntu Server 16.04.3 LTS
+/etc/network/interface
+      address x.x.x.x
+      netmask x.x.x.x
+      gateway x.x.x.x
+      dns-nameserver x.x.x.x
+
+/etc/resolv.conf
+      nameserver x.x.x.x
