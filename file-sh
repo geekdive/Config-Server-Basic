@@ -1,0 +1,5 @@
+#!/bin/bash
+echo "Hello, World!" 
+echo "Knowledge is power."
+
+create file with .sh (for exutable)
