@@ -1,0 +1,2 @@
+remove with:
+  ssh-keygen -f "/home/geek/.ssh/known_hosts" -R 172.16.3.24
