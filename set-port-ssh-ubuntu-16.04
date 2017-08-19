@@ -1,0 +1,134 @@
+Step 1 : to Access Server with SSH on terminal Linux Ubuntu 16.04
+ssh root@hostname/IP
+example: ssh root@172.16.x.x or root@server.com
+
+Step 2 : Access with live SSH remote
+ssh -l root 172.16.x.x
+enter your password
+
+First copy your original data sshd_config with:
+cp /etc/ssh/sshd_config /etc/ssh/sshd_config_backup
+result:
+upb@samba:/etc/ssh$ tree
+.
+├── moduli
+├── ssh_config
+├── sshd_config
+├── sshd_config_backup
+├── ssh_host_dsa_key
+├── ssh_host_dsa_key.pub
+├── ssh_host_ecdsa_key
+├── ssh_host_ecdsa_key.pub
+├── ssh_host_ed25519_key
+├── ssh_host_ed25519_key.pub
+├── ssh_host_rsa_key
+├── ssh_host_rsa_key.pub
+└── ssh_import_id
+
+0 directories, 13 files
+
+Now Edit the file on:
+upb@samba:~$ sudo nano /etc/ssh/sshd_config
+
+# Package generated configuration file
+# See the sshd_config(5) manpage for details
+
+# What ports, IPs and protocols we listen for
+
+//Edit this stat from 22 to another number of port, i chose 22022
+Port 22022
+# Use these options to restrict which interfaces/protocols sshd will bind to
+#ListenAddress ::
+#ListenAddress 0.0.0.0
+Protocol 2
+# HostKeys for protocol version 2
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/ssh/ssh_host_dsa_key
+HostKey /etc/ssh/ssh_host_ecdsa_key
+HostKey /etc/ssh/ssh_host_ed25519_key
+#Privilege Separation is turned on for security
+UsePrivilegeSeparation yes
+
+and install apf-firewall
+upb@samba:~$ sudo apt -y install apf-firewall
+
+if installed Updating Your Firewall with:
+but first you must be backup data original with:
+upb@samba:~$ sudo cp -a /etc/apf-firewall/conf.apf /etc/apf-firewall/conf.apf.bak
+
+ls -li /etc/apf-firewall/
+total 132
+791918 -rw-r--r-- 1 root root    15 Mar 17  2009 VERSION
+791934 -rw-r--r-- 1 root root   966 Feb  7  2005 allow_hosts.rules
+791933 -rw-r--r-- 1 root root 20912 Dec 12  2008 bt.rules
+791930 -rwxr-xr-x 1 root root 23299 Jul 28  2011 conf.apf
+791947 -rwxr-xr-x 1 root root 23299 Jul 28  2011 conf.apf.bak
+791936 -rw-r--r-- 1 root root   929 Feb  7  2005 deny_hosts.rules
+791938 -rw-r--r-- 1 root root     0 Aug 27  2003 ds_hosts.rules
+791931 -rw-r--r-- 1 root root     0 Jun  3  2007 ecnshame_hosts.rules
+791937 -rwxr-xr-x 1 root root 10719 Jul 28  2011 firewall
+791917 -rw-r--r-- 1 root root   971 Feb  7  2005 glob_allow.rules
+791932 -rw-r--r-- 1 root root   951 Feb 13  2005 glob_deny.rules
+791920 drwxr-xr-x 2 root root  4096 Aug 19 17:18 internals
+791919 -rw-r--r-- 1 root root   495 May 31  2007 log.rules
+791910 -rw-r--r-- 1 root root   173 Jul 28  2011 main.rules
+791939 -rw-r--r-- 1 root root   172 Jul 18  2008 postroute.rules
+791935 -rw-r--r-- 1 root root   168 Jun  3  2005 preroute.rules
+791911 -rw-r--r-- 1 root root     0 May 30  2007 sdrop_hosts.rules
+791916 -rw-r--r-- 1 root root  3113 Jun  4  2007 sysctl.rules
+791912 drwxr-xr-x 2 root root  4096 Aug 19 17:18 vnet
+
+if data is copied next add the number of port your chose on config ssh on line:
+CTRL + Q for search the line with keyword: IG_TCP and add the port on IC_TCP.. bla bla bla
+# Common inbound (ingress) TCP ports
+IG_TCP_CPORTS="22, 22022"
+
+Next Restart the service and
+upb@samba:~$ service sshd restart
+==== AUTHENTICATING FOR org.freedesktop.systemd1.manage-units ===
+Authentication is required to restart 'ssh.service'.
+Authenticating as: upb,,, (upb)
+Password: ---> type your computer password
+==== AUTHENTICATION COMPLETE ===
+upb@samba:~$
+
+Service is Running
+upb@samba:~$ service sshd status
+● ssh.service - OpenBSD Secure Shell server
+   Loaded: loaded (/lib/systemd/system/ssh.service; enabled; vendor preset: enabled)
+   Active: active (running) since Sat 2017-08-19 17:25:32 WIB; 50s ago
+ Main PID: 5504 (sshd)
+    Tasks: 1
+   Memory: 6.3M
+      CPU: 3ms
+   CGroup: /system.slice/ssh.service
+           └─5504 /usr/sbin/sshd -D
+
+Aug 19 17:25:32 samba systemd[1]: Stopped OpenBSD Secure Shell server.
+Aug 19 17:25:32 samba systemd[1]: Starting OpenBSD Secure Shell server...
+Aug 19 17:25:32 samba sshd[5504]: Server listening on 0.0.0.0 port 22022.
+Aug 19 17:25:32 samba sshd[5504]: Server listening on :: port 22022.
+Aug 19 17:25:32 samba systemd[1]: Started OpenBSD Secure Shell server.
+
+Sekarang coba akses server yang sudah diganti SSH port nomornya dengan server lain disini 
+server yang sudah di setting port SSH : 172.16.3.21
+server yang ngakses : 172.16.7.51
+
+untuk akses server yang menggunakan port yaitu dengan:
+ssh access with port: ssh -l usr -p xxxx 192.xxx.xxx.xxx
+
+Result:
+geek@void:~$ ssh -l upb -p 2222 172.16.3.21
+upb@172.16.3.21's password: 
+Welcome to Ubuntu 16.04.2 LTS (GNU/Linux 4.4.0-77-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+112 packages can be updated.
+52 updates are security updates.
+
+
+Last login: Sat Aug 19 17:11:16 2017 from 172.16.7.51
+upb@samba:~$
