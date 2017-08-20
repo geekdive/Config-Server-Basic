@@ -1,0 +1,17 @@
+upb@samba:~$ sudo adduser frontoffice
+Adding user `frontoffice' ...
+Adding new group `frontoffice' (1002) ...
+Adding new user `frontoffice' (1002) with group `frontoffice' ...
+Creating home directory `/home/frontoffice' ...
+Copying files from `/etc/skel' ...
+Enter new UNIX password:
+Retype new UNIX password:
+passwd: password updated successfully
+Changing the user information for frontoffice
+Enter the new value, or press ENTER for the default
+        Full Name []: Front Office
+        Room Number []: -
+        Work Phone []: -
+        Home Phone []: -
+        Other []: -
+Is the information correct? [Y/n] y
