@@ -1,0 +1,37 @@
+sudo nano /etc/samba/smb.conf
+[sudo] password for upb:
+
+User 1: 
+[STAFF-AKADEMIK-PB]
+
+comment = Data Staff Akademik
+path = /home/staffoffice/dataStaffAkademik/
+writeable = yes
+available = yes
+browsable = yes
+valid users = staffoffice
+
+User 2:
+[STAFF-FRONTOFFICE]
+
+comment = Data Staff Front Office
+path = /home/frontoffice/dataFrontOffice/
+writeable = yes
+available = yes
+browsable = yes
+valid users = frontoffice
+
+
+upb@samba:/home/staffoffice$ sudo /etc/init.d/samba restart
+[ ok ] Restarting nmbd (via systemctl): nmbd.service.
+[ ok ] Restarting smbd (via systemctl): smbd.service.
+[ ok ] Restarting samba-ad-dc (via systemctl): samba-ad-dc.service.
+upb@samba:/home/staffoffice$ ifconfig
+ens18     Link encap:Ethernet  HWaddr fe:07:02:17:e6:76
+          inet addr:172.16.3.100  Bcast:172.16.3.255  Mask:255.255.255.0
+          inet6 addr: fe80::fc07:2ff:fe17:e676/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:266797 errors:0 dropped:10194 overruns:0 frame:0
+          TX packets:29292 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:26638470 (26.6 MB)  TX bytes:4557361 (4.5 MB)
