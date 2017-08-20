@@ -21,6 +21,12 @@ available = yes
 browsable = yes
 valid users = frontoffice
 
+Create Password Samba for User:
+upb@samba:/home/staffoffice$ sudo smbpasswd -a frontoffice
+New SMB password:
+Retype new SMB password:
+Added user frontoffice.
+upb@samba:/home/staffoffice$
 
 upb@samba:/home/staffoffice$ sudo /etc/init.d/samba restart
 [ ok ] Restarting nmbd (via systemctl): nmbd.service.
