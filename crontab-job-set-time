@@ -1,0 +1,2 @@
+Setup Job with Time Log
+* * * * * rsync -avzh -e 'ssh -p 6006' /home/staffoffice/ upb@172.16.3.106:/home/upb/backup-data/ --log-file=/home/staffoffice/datasharer/backup-log-`date "+\%d-\%m-\%y_\%H:\%M:\%S"`.txt
