@@ -1,0 +1,4 @@
+upb@ftp:~$ sudo nano /etc/proftpd/proftpd.conf
+
+# Use this to jail all users in their homes
+DefaultRoot                     /home/ftpdata/dataftp/
