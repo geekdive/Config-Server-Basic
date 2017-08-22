@@ -1,0 +1,10 @@
+upb@ftp:/home/ftpdata/dataftp$ crontab -e
+no crontab for upb - using an empty one
+
+Select an editor.  To change later, run 'select-editor'.
+  1. /bin/ed
+  2. /bin/nano        <---- easiest
+  3. /usr/bin/vim.basic
+  4. /usr/bin/vim.tiny
+
+Choose 1-4 [2]: 2
