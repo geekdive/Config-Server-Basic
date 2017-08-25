@@ -1,0 +1,44 @@
+ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)
+
+To reset the password
+
+Follow these steps (can be helpful if you really forget your password and you can try it anytime, even if you're not in the situation at the moment):
+
+Stop mysql
+sudo /etc/init.d/mysql stop
+
+Or for other distribution versions:
+sudo /etc/init.d/mysqld stop
+
+Start MySQL in safe mode
+sudo mysqld_safe --skip-grant-tables &
+
+Log into MySQL using root
+mysql -uroot
+
+Select the MySQL database to use
+use mysql;
+
+Reset the password
+update user set password=PASSWORD("mynewpassword") where User='root';
+
+Flush the privileges
+flush privileges;
+
+Restart the server
+quit
+Stop and start the server again
+Ubuntu and Debian:
+
+sudo /etc/init.d/mysql stop
+...
+sudo /etc/init.d/mysql start
+On CentOS, Fedora, and RHEL:
+sudo /etc/init.d/mysqld stop
+...
+sudo /etc/init.d/mysqld start
+Login with a new password
+mysql -u root -p
+Type the new password and enjoy your server again like nothing happened
+This was taken from Reset a MySQL root password.
+
