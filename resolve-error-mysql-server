@@ -1,5 +1,5 @@
 ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)
-
+sumber: https://stackoverflow.com/questions/11657829/error-2002-hy000-cant-connect-to-local-mysql-server-through-socket-var-run
 To reset the password
 
 Follow these steps (can be helpful if you really forget your password and you can try it anytime, even if you're not in the situation at the moment):
