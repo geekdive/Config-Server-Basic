@@ -1,0 +1,5 @@
+Step 1:
+apt-get install mysql-server mysql-client
+
+New password for the MySQL "root" user: <-- yourrootsqlpassword
+Repeat password for the MySQL "root" user: <-- yourrootsqlpassword
