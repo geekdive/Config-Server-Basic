@@ -1,0 +1,7 @@
+/home/ftpdata/dataftp
+/home/ftpdata/logBackup
+
+* * * * * rsync -avzh -e 'ssh -p 6006' /home/ftpdata/ upb@172.16.3.106:/home/upb/backupSAMBA/ --log-file=/home/ftpdata/logBackup/backup-log-ftp-`date "+\%d-\%m-\%y|\%H:\%M:\%S"`.txt
+
+# Backup direktori 1 ke direktori 2 setiap 4 menit sekali
+*/4 * * * * rsync -av --delete /directory1/ /directory2/
