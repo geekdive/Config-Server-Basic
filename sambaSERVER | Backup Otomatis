@@ -1,0 +1,1 @@
+*/10 * * * * rsync -avzh -e 'ssh -p 6006' /home/logbackup upb@172.16.3.106:/home/upb/backupSAMBA/ --log-file=/home/logbackup/log-backup-samba-`date "+\%d-\%m-\%y|\%H:\%M:\%S"`.txt
