@@ -1,0 +1,15 @@
+FTP Akses: 
+host: 172.16.x.x
+user: x
+password: 12345678
+port default: 21
+
+directory akan mengacu pada folder : misal : /home/dst/dataUmum/dataFTPstaff/
+
+sFTP Akses:
+host: 172.16.x.x
+user: x
+password: 12345678
+port default: 6006
+
+directory akan mengacu pada folder root dan semua resource yang ada dalam sistem
