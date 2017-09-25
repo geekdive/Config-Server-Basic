@@ -39,3 +39,5 @@ moeslim@decoded:~$ sudo nano /etc/apache2/sites-available/000-default.conf
 # vim: syntax=apache ts=4 sw=4 sts=4 sr noet
 
 moeslim@decoded:~$ sudo service apache2 restart
+
+sumber: https://askubuntu.com/questions/337874/change-apache-document-root-folder-to-secondary-hard-drive
