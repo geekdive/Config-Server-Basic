@@ -28,3 +28,52 @@ C:\\Users\\fight/.ssh/known_hosts updated.
 Original contents retained as C:\\Users\\fight/.ssh/known_hosts.old
 
 C:\Users\fight> Done!
+
+jika kamu tetap mendapatkan informasi seperti diatas, maka yang harus kamu lakukan adalah mengecek apakah ip address yang akan diremote tersebut ada di know host seperti dibawah ini
+
+C:\Users\fight>ssh -l server 192.168.2.23
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ECDSA key sent by the remote host is
+SHA256:i7/J3BndYeCNlweThESo9u8pu7Dc5Ebc0kBot+iY3B0.
+Please contact your system administrator.
+Add correct host key in C:\\Users\\fight/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in C:\\Users\\fight/.ssh/known_hosts:6
+ECDSA host key for 192.168.2.23 has changed and you have requested strict checking.
+Host key verification failed.
+
+C:\Users\fight>ssh-keygen -R 192.168.2.23
+# Host 192.168.2.23 found: line 6
+C:\Users\fight/.ssh/known_hosts updated.
+Original contents retained as C:\Users\fight/.ssh/known_hosts.old
+
+jika masih ada yang demikian berarti IP yang pernah digunakan harus dihapus berikut
+
+C:\Users\fight>notepad C:\Users\fight\.ssh\known_hosts
+
+akses notepad dan jika ada hapus seluruh host yang sudah terdaftar agar tidak bertabrakan di lain waktu, dan jika berhasil akan tampak seperti berikut
+
+C:\Users\fight>ssh -l server 192.168.2.23
+The authenticity of host '192.168.2.23 (192.168.2.23)' can't be established.
+ECDSA key fingerprint is SHA256:i7/J3BndYeCNlweThESo9u8pu7Dc5Ebc0kBot+iY3B0.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '192.168.2.23' (ECDSA) to the list of known hosts.
+server@192.168.2.23's password:
+Permission denied, please try again.
+server@192.168.2.23's password:
+Welcome to Ubuntu 16.04.5 LTS (GNU/Linux 4.4.0-142-generic x86_64)Welcome to Ubuntu 16.04.5 LTS (GNU/Linux 4.4.0-142-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+0 packages can be updated.
+0 updates are security updates.
+
+
+Last login: Mon Feb 11 08:14:54 2019
+server@praktikum_webserver:~$
