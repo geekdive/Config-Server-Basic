@@ -1,2 +1,30 @@
-remove with:
-  ssh-keygen -f "/home/geek/.ssh/known_hosts" -R 172.16.3.24
+Remove SSH Keygen in Familiy in Debian and Ubuntu Distro's with:
+
+ssh-keygen -f "/home/geek/.ssh/known_hosts" -R 172.16.3.24
+
+if you OS type Used in Windows, you can remove with command bottom
+
+C:\Users\fight>ssh -l server 192.168.2.23
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ECDSA key sent by the remote host is
+SHA256:i7/J3BndYeCNlweThESo9u8pu7Dc5Ebc0kBot+iY3B0.
+Please contact your system administrator.
+Add correct host key in C:\\Users\\fight/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in C:\\Users\\fight/.ssh/known_hosts:6
+ECDSA host key for 192.168.2.23 has changed and you have requested strict checking.
+Host key verification failed.
+
+C:\Users\fight>ssh-keygen -f "C:\\Users\\fight/.ssh/known_hosts" -R 172.16.2.56
+Host 172.16.2.56 not found in C:\\\\Users\\\\fight/.ssh/known_hosts
+
+C:\Users\fight>ssh-keygen -f "C:\\Users\\fight/.ssh/known_hosts" -R 192.168.2.56
+# Host 192.168.2.56 found: line 8
+C:\\Users\\fight/.ssh/known_hosts updated.
+Original contents retained as C:\\Users\\fight/.ssh/known_hosts.old
+
+C:\Users\fight> Done!
